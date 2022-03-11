@@ -1,5 +1,5 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, response
 from django.shortcuts import render
 
-def pet_basic(req):
-    return HttpResponse('Pets View')
+def pet_all(req):
+    return render(req, 'pet_list.html')
