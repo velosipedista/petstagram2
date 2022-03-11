@@ -4,3 +4,4 @@ from .views import landing
 urlpatterns = [
     path('', landing),
 ]
+  
