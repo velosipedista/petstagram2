@@ -11,3 +11,12 @@ def list_pets(req):
     }
 
     return render(req, 'pet_list.html', context)
+
+def pet_details(req, pk):
+    pet = Pet.objects.get(pk=pk)
+    likes_count = pet.like_set.count()
+    context = {
+        'pet': pet,
+        'likes':likes_count,
+    }
+    return render(req, 'pet_detail.html', context )
