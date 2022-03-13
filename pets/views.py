@@ -1,8 +1,5 @@
-from importlib.resources import contents
-from multiprocessing import context
-from django.http import HttpResponse, response
-from django.shortcuts import render
-from .models import Pet
+from django.shortcuts import redirect, render
+from .models import Pet, Like
 
 def list_pets(req):
     all_pets = Pet.objects.all()
@@ -20,3 +17,10 @@ def pet_details(req, pk):
         'likes':likes_count,
     }
     return render(req, 'pet_detail.html', context )
+
+
+def like_pet(req, pk):
+    pet = Pet.objects.get(pk=pk)
+    like = Like(pet=pet)
+    like.save()
+    return redirect('dtls', pet.id)
