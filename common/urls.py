@@ -2,6 +2,6 @@ from django.urls import path
 from .views import landing
 
 urlpatterns = [
-    path('', landing),
+    path('', landing, name="index"),
 ]
   
